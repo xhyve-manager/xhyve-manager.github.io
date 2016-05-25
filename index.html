@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>xhyve-manager by xhyve-manager</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>xhyve-manager</h1>
+        <h2></h2>
+
+        <section id="downloads">
+          <a href="https://github.com/xhyve-manager" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="xhyve-manager" class="anchor" href="#xhyve-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="https://github.com/xhyve-manager/xhyve-manager">xhyve-manager</a>
+</h1>
+
+<p>A simple utility to manage the lifecycle of <a href="https://xhyve.org">xhyve</a> Virtual Machines on OS X 10.10 and above.</p>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p><a href="https://xhyve-manager.github.io/docs">See here</a>.</p>
+
+<h2>
+<a id="commands" class="anchor" href="#commands" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Commands</h2>
+
+<ul>
+<li>
+<code>xhyve-manager setup</code> - setup up the host machine's NFS.</li>
+<li>
+<code>xhyve-manager create</code> - Create a new virtual machine.</li>
+<li>
+<code>xhyve-manager start [machine-name]</code> - start a virtual machine (must be run as root)</li>
+<li>
+<code>xhyve-manager edit [machine-name]</code> - edit the virtual machine configuration.</li>
+<li>
+<code>xhyve-manager extract [path-to-iso]</code> - helper command to convert a Linux ISO to something OS X can read</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You need to be running OS X 10.10 and above.</p>
+
+<p>To install:</p>
+
+<div class="highlight highlight-source-shell"><pre>git clone https://github.com/xhyve-manager/xhyve-manager
+<span class="pl-c1">cd</span> xhyve-manager
+make install</pre></div>
+
+<p>Then, you'll need to run <code>setup</code> to set up your host machine with the correct NFS configuration so as to be able to do 2-way sync of folders.</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo xhyve-manager setup</pre></div>
+
+<p>This will create an entry in <code>/etc/exports</code>:</p>
+
+<pre><code># BEGIN XHYVE
+/Users -mapall=501 -network 192.168.64.0 -alldirs -mask 255.255.255.0
+# END XHYVE
+</code></pre>
+
+<p>And (re)start <code>nfsd</code></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
